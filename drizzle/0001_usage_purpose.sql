@@ -1,0 +1,1 @@
+ALTER TABLE bookings ADD COLUMN usage_purpose TEXT NOT NULL DEFAULT '';

@@ -1,0 +1,14 @@
+{
+  "name": "kt-haengdang-building",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "scripts": {
+    "build": "node scripts/build-vercel.mjs",
+    "build:worker": "node scripts/build-booking.mjs",
+    "dev:worker": "npm run build:worker && node scripts/booking-local.mjs"
+  }
+}
