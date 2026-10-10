@@ -2045,3 +2045,6 @@ input::placeholder {
 
 /* Mobile hero: taller photo and compact space below actions. */
 @media(max-width:520px){.hero{min-height:0;padding-top:240px}.hero>img{height:240px;object-fit:cover;object-position:center top}.hero-copy{padding-bottom:14px}.hero-caption{top:209px}}
+
+/* Original KT CI assets; preserve the official proportions and colors. */
+.brand .kt-ci{display:block;width:43px;height:35px;object-fit:contain;flex-shrink:0}.footer-brand .kt-ci{display:block;width:31px;height:25px;object-fit:contain;flex-shrink:0}@media(max-width:520px){.brand .kt-ci{width:35px;height:29px}}
