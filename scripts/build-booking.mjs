@@ -3,7 +3,12 @@ import path from 'node:path';
 import {createHash} from 'node:crypto';
 const assetVersion=createHash('sha256').update(fs.readFileSync('worker/reservation-client.js')).update(fs.readFileSync('worker/booking.css')).update(fs.readFileSync('site-assets/style.css')).update(fs.readFileSync('worker/report-client.js')).digest('hex').slice(0,12);
 const root=process.cwd(),out=path.join(root,'dist');
-const hosting=JSON.parse(fs.readFileSync('.openai/hosting.json','utf8'));
+// Sites metadata is optional for Vercel's static export. The generated
+// Worker still uses the DB binding when run with the local D1 adapter.
+const hostingPath=path.join(root,'.openai','hosting.json');
+const hosting=fs.existsSync(hostingPath)
+  ? JSON.parse(fs.readFileSync(hostingPath,'utf8'))
+  : {d1:'DB',r2:null};
 if(hosting.static||hosting.d1!=='DB')throw Error('Worker must use the DB binding');
 const assets={};
 const mime={'.png':'image/png','.html':'text/html; charset=utf-8','.css':'text/css; charset=utf-8','.js':'text/javascript; charset=utf-8','.jpg':'image/jpeg','.txt':'text/plain; charset=utf-8'};

@@ -34,3 +34,6 @@ ZIP에는 실제 예약·접수 데이터, 개인정보, 인증 토큰이 없습
 이 ZIP은 업로드할 파일 묶음입니다. GitHub 업로드 및 Vercel 실제 배포는 아직 실행하지 않았습니다.
 
 참고: https://vercel.com/docs/project-configuration/vercel-json 및 https://vercel.com/docs/functions/configuring-functions/runtime
+
+## Vercel 빌드 오류 수정 (2026-10-10)
+.openai/hosting.json은 Sites 전용 배포 메타데이터입니다. 없으면 {d1: "DB", r2: null} 기본값을 사용하므로 GitHub에 .openai 폴더를 올리지 않아도 npm run build가 성공합니다. 파일이 있는 경우 원래 설정의 검증은 유지합니다. Vercel 예약 연결 주소는 런타임 환경변수 BOOKING_API_ORIGIN, 링크 미리보기 도메인은 빌드 환경변수 SITE_URL로 설정합니다. 비밀키는 필요하지 않습니다. .openai가 없는 새 폴더에서 npm run build 성공 및 예약 생성·조회·취소 API 프록시 전달 검증을 완료했습니다.
